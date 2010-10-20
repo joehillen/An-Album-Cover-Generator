@@ -16,5 +16,9 @@ BOT_VERSION = '1.0'
 SPIDER_MODULES = ['albumgen.spiders']
 NEWSPIDER_MODULE = 'albumgen.spiders'
 DEFAULT_ITEM_CLASS = 'albumgen.items.AlbumgenItem'
+ITEM_PIPELINES = ['albumgen.pipelines.PicPipeline']
+IMAGES_STORE = '/tmp/albumgen/'
+IMAGES_EXPIRE = 1
 USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 
+LOG_ENABLED = True # avoid log noise

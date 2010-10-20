@@ -8,4 +8,8 @@ from scrapy.item import Item, Field
 class AlbumgenItem(Item):
     # define the fields for your item here like:
     # name = Field()
-    pass
+    band = Field()
+    album = Field()
+    pic = Field()
+    pic_path = Field()
+    identifier = Field()
