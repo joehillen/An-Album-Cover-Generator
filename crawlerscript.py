@@ -42,7 +42,6 @@ if __name__ == "__main__":
 
 	items = list()
 	crawler = CrawlerScript()
-	items.append(crawler.crawl('pic'))
-	items.append(crawler.crawl('band'))
-	items.append(crawler.crawl('album'))
+	for i in range(10):
+		items.append(crawler.crawl('pic'))
 	print items
