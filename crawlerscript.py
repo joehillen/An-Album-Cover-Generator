@@ -21,30 +21,28 @@ class CrawlerScript():
     def _item_passed(self, item):
     	self.items.append(item)
 
-    def crawl(self, queue, spider_name):
+    def _crawl(self, queue, spider_name):
         spider = self.crawler.spiders.create(spider_name)
         if spider:
             self.crawler.queue.append_spider(spider)
     	self.crawler.start()
         self.crawler.stop()
         queue.put(self.items)
-        
-
-class CrawlerP():
-		
-	def crawl(self, spider):
+    
+    def crawl(self, spider):
 		queue = Queue()
-		c = CrawlerScript()
-		p = Process(target=c.crawl, args=(queue, spider,))
+		p = Process(target=self._crawl, args=(queue, spider,))
 		p.start()
 		p.join()
-		return queue.get()
+		return queue.get(True)
 
 # Usage
 if __name__ == "__main__":
 	log.start()
 
 	items = list()
-	crawler = CrawlerP()
+	crawler = CrawlerScript()
 	items.append(crawler.crawl('pic'))
+	items.append(crawler.crawl('band'))
+	items.append(crawler.crawl('album'))
 	print items
