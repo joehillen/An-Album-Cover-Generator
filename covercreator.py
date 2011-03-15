@@ -91,10 +91,10 @@ class CoverCreator:
 		album_font, album_width, album_height = fit_font(album[0], font_size, font_path, space, im_width)
 
 		# d is for draw
-		d_height = im_height - album_height - space
-		d_width = im_width - album_width - space
+		d_height = im_height - album_height # - space
+		d_width = im_width - album_width  - space
 
-		draw.text((space, space), band[0], font=band_font, fill=band[1])
+		draw.text((space, 0), band[0], font=band_font, fill=band[1])
 		draw.text((d_width, d_height), album[0], font=album_font, fill=album[1])
 		
 	def cover(self, filename, band, album, output_filename="album.png", bg_color="black", 
