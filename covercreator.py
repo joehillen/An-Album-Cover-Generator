@@ -12,7 +12,7 @@ class CoverCreator:
 	# apply vintage effect using GIMP
 	def vintage(self, filename):
 		tmp_file = "/tmp/" + os.path.basename(filename)
-		commands.getoutput("gimp -i -b '(once-vintage-look \"{0}\" \"{1}\")' -b '(gimp-quit 0)'".format(filename, tmp_file))
+		commands.getoutput("gimp-console -i -b '(once-vintage-look \"{0}\" \"{1}\")' -b '(gimp-quit 0)'".format(filename, tmp_file))
 		self.image = Image.open(tmp_file)
 		os.remove(tmp_file)
 
@@ -68,7 +68,7 @@ class CoverCreator:
 			raise Exception
 
 	# add text
-	def text(self, band, album, space, font_size, font_path="/usr/share/fonts/truetype/freefont/FreeSansBold.ttf"):
+	def text(self, band, album, space, font_size, font_path="FreeSansBold.ttf"):
 	
 		draw = ImageDraw.Draw(self.image)
 
