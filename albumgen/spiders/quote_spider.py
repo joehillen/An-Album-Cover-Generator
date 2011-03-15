@@ -10,7 +10,7 @@ class QuoteSpider(BaseSpider):
 	def parse (self, response):
 		hxs = HtmlXPathSelector(response)
 		item = AlbumgenItem()
-		quote = hxs.select('//dt[@class="quote"]/a/text()')[9].extract()
+		quote = hxs.select('//dt[@class="quote"]/a/text()')[-1].extract()
 		regex = re.compile('([\w\']+\s+){3}[\w+\']+\.$')
 		match = regex.search(quote)
 		item['identifier'] = "album"
